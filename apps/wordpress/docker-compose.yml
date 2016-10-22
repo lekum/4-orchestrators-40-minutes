@@ -4,7 +4,7 @@
    db:
      image: mysql:5.7
      volumes:
-       - "./.data/db:/var/lib/mysql"
+       - "/var/lib/mysql"
      environment:
        MYSQL_ROOT_PASSWORD: wordpress
        MYSQL_DATABASE: wordpress

@@ -13,7 +13,7 @@ EOF
 
 apt-get update
 apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual docker-engine kubelet kubeadm kubectl kubernetes-cni
-sed -i 's#ExecStart=.*#ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375#' /lib/systemd/system/docker.service
-systemctl daemon-reload
-service docker restart
+#sed -i 's#ExecStart=.*#ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375#' /lib/systemd/system/docker.service
+#systemctl daemon-reload
+#service docker restart
 adduser ubuntu docker

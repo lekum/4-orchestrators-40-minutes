@@ -3,24 +3,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "ubuntu/xenial64"
 
     config.vm.define "server1" do |server|
-        server.vm.hostname = "server1"
+        server.vm.hostname = "k8smaster"
         server.vm.provision "shell", path: "provision/k8s.sh"
         server.vm.network :private_network, ip: "10.0.15.21"
-        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*server1.*/10\.0\.15\.21 server1/' -i /etc/hosts"
+        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*k8smaster.*/10\.0\.15\.21 k8smaster/' -i /etc/hosts"
     end
 
     config.vm.define "server2" do |server|
-        server.vm.hostname = "server2"
+        server.vm.hostname = "k8sworker1"
         server.vm.provision "shell", path: "provision/k8s.sh"
         server.vm.network :private_network, ip: "10.0.15.22"
-        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*server2.*/10\.0\.15\.22 server2/' -i /etc/hosts"
+        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*k8sworker1.*/10\.0\.15\.22 k8sworker1/' -i /etc/hosts"
     end
 
     config.vm.define "server3" do |server|
-        server.vm.hostname = "server3"
+        server.vm.hostname = "k8sworker2"
         server.vm.provision "shell", path: "provision/k8s.sh"
         server.vm.network :private_network, ip: "10.0.15.23"
-        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*server3.*/10\.0\.15\.23 server3/' -i /etc/hosts"
+        server.vm.provision :shell, inline: "sed 's/127\.0\.0\.1.*k8sworker2.*/10\.0\.15\.23 k8sworker2/' -i /etc/hosts"
     end
 
 end

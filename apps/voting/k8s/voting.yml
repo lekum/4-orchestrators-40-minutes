@@ -104,7 +104,6 @@ metadata:
 spec:
   ports:
     - port: 6379
-      targetPort: 6379
   selector:
     app: redis
 ---
@@ -115,6 +114,5 @@ metadata:
 spec:
   ports:
     - port: 5432
-      targetPort: 5432
   selector:
     app: postgres

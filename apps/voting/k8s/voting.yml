@@ -12,7 +12,9 @@ spec:
       containers:
         - name: vote
           image: lachlanevenson/examplevotingapp_vote:latest
-          command: python app.py
+          command:
+            - python
+            - app.py
           ports:
             - containerPort: 80
 ---
@@ -71,16 +73,19 @@ spec:
       containers:
         - name: result
           image: lachlanevenson/examplevotingapp_result:latest
-          command: nodemon --debug server.js
+          command:
+            - nodemon
+            - --debug
+            - server.js
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
-type: NodePort
 metadata:
   name: vote-service
 spec:
+  type: NodePort
   ports:
     - port: 5000
       targetPort: 80
@@ -89,10 +94,10 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-type: NodePort
 metadata:
   name: result-service
 spec:
+  type: NodePort
   ports:
     - port: 5001
       targetPort: 80
@@ -104,6 +109,8 @@ kind: Service
 metadata:
   name: redis
 spec:
+  ports:
+    - port: 6379
   selector:
     app: redis
 ---
@@ -112,5 +119,7 @@ kind: Service
 metadata:
   name: postgres
 spec:
+  ports:
+    - port: 5432
   selector:
     app: postgres

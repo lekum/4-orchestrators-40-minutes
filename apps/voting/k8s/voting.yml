@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: vote-deployment
+  name: vote
 spec:
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: redis-deployment
+  name: redis
 spec:
   template:
     metadata:
@@ -33,7 +33,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: db-deployment
+  name: db
 spec:
   template:
     metadata:
@@ -47,7 +47,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: worker-deployment
+  name: worker
 spec:
   template:
     metadata:
@@ -61,7 +61,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: result-deployment
+  name: result
 spec:
   template:
     metadata:
@@ -79,7 +79,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: vote-service
+  name: vote
 spec:
   type: NodePort
   ports:
@@ -91,7 +91,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: result-service
+  name: result
 spec:
   type: NodePort
   ports:

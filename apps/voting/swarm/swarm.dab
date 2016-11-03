@@ -1,0 +1,56 @@
+{
+  "Services": {
+    "db": {
+      "Image": "postgres@sha256:d6b51879ca8558c68c5ed74f95ea9f76539fab003335adf5908a9042e53c7987", 
+      "Networks": [
+        "default"
+      ]
+    }, 
+    "redis": {
+      "Image": "redis@sha256:f1ed3708f538b537eb9c2a7dd50dc90a706f7debd7e1196c9264edeea521a86d", 
+      "Networks": [
+        "default"
+      ]
+    }, 
+    "result": {
+      "Args": [
+        "nodemon", 
+        "--debug", 
+        "server.js"
+      ], 
+      "Image": "lachlanevenson/examplevotingapp_result@sha256:96fe61d32ff3fa85ed19a254876981e94fd35632b316a20d56a3c2f1f432960b", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 80, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "vote": {
+      "Args": [
+        "python", 
+        "app.py"
+      ], 
+      "Image": "lachlanevenson/examplevotingapp_vote@sha256:c5cd487ae93f45c8f1d3776f56890b0ebb9179c0bc1aa548553a2687889a8955", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 80, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "worker": {
+      "Image": "lachlanevenson/examplevotingapp_worker@sha256:999fbf184538e27c56b4cb509d7bd57e12c3864b5d891a1fa51c14a779f31a98", 
+      "Networks": [
+        "default"
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "/my-nginx",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "nginx:1.9.0",
+      "network": "bridge",
+      "portMappings": [
+        {
+          "containerPort": 0,
+          "servicePort": 10000,
+          "protocol": "tcp",
+          "labels": {}
+        }
+      ],
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 10000,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

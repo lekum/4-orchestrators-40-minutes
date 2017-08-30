@@ -12,5 +12,4 @@ add-apt-repository \
    stable"
 apt-get update
 apt-get install -yq docker-ce
-groupadd docker
 adduser ubuntu docker
